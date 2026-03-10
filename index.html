@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Silanga SHS Career Guidance & Enrollment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+html { scroll-behavior: smooth; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body { color:white; overflow-x:hidden; background:#140032; }
+
+/* Background Gradient */
+.background{
+position:fixed; top:0; left:0; width:100%; height:100%;
+background:linear-gradient(rgba(20,0,50,0.9), rgba(80,0,120,0.9));
+z-index:-1;
+}
+
+/* Navigation */
+nav{
+display:flex; justify-content:space-between; align-items:center;
+padding:20px 10%; background:rgba(0,0,0,0.4);
+}
+nav h2{ color:#00eaff; }
+nav ul{ display:flex; list-style:none; }
+nav ul li{ margin-left:20px; }
+nav ul li a{ color:white; text-decoration:none; }
+nav ul li a:hover{ color:#00eaff; }
+
+/* Hero */
+.hero{ text-align:center; padding:120px 20px; }
+.hero h1{ font-size:40px; margin-bottom:20px; }
+.hero span{ color:#00eaff; }
+.hero p{ max-width:700px; margin:auto; margin-bottom:30px; }
+
+/* Button */
+.btn{
+padding:12px 25px; border:none; border-radius:30px;
+background:#00eaff; font-weight:600; cursor:pointer;
+transition: 0.3s;
+}
+.btn:hover{ background:#00c0e0; }
+
+/* Assessment */
+#assessment{ display:none; padding:60px 10%; text-align:center; }
+.question{ display:none; margin-top:20px; }
+.progress{ margin-bottom:20px; font-weight:600; color:#00eaff; }
+
+/* Cards */
+.features{ display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:60px 10%; }
+.card{
+background:rgba(255,255,255,0.1); padding:25px; border-radius:15px; width:250px; transition:0.3s;
+}
+.card:hover{ background:rgba(0,234,255,0.2); transform:translateY(-5px); }
+.card h3{ color:#00eaff; margin-bottom:10px; }
+
+/* Footer */
+footer{ text-align:center; padding:20px; background:rgba(0,0,0,0.4); margin-top:40px; }
+input[type="text"], input[type="number"], input[type="email"]{
+width:80%; padding:10px; margin:5px 0 15px 0; border-radius:10px; border:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<nav>
+<h2>Silanga CareerGuide</h2>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#assessment">Assessment</a></li>
+<li><a href="#careers">Careers</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<h1>A Career Guidance Web App for <span>Grade 10 Students</span></h1>
+<p>This system helps students explore subjects and choose the right SHS strand before enrollment.</p>
+<button class="btn" onclick="showQuiz()">Start Career Assessment</button>
+</section>
+
+<!-- ASSESSMENT -->
+<section id="assessment">
+<h2>SHS Course Selection & Enrollment</h2>
+
+<button id="startBtn" class="btn" onclick="startQuiz()">Start Quiz</button>
+
+<form id="careerForm">
+
+<!-- Student Info -->
+<div id="studentInfo" style="display:none; margin-bottom:30px;">
+<p class="progress">Step 0/6: Enter your information</p>
+<input type="text" id="studentName" placeholder="Full Name" required><br>
+<input type="number" id="studentLRN" placeholder="LRN" required><br>
+<input type="text" id="studentSection" placeholder="Grade 10 Section" required><br>
+<input type="email" id="studentEmail" placeholder="Email (optional)"><br>
+<button type="button" class="btn" onclick="nextQuestion(0)">Next</button>
+</div>
+
+<!-- QUESTION 1 -->
+<div class="question" id="q1">
+<p class="progress">Question 1/6</p>
+<p>1. Choose a Core Subject</p>
+<input type="radio" name="q1"> Mabisang Komunikasyon<br>
+<input type="radio" name="q1"> General Mathematics<br>
+<input type="radio" name="q1"> General Science<br>
+<input type="radio" name="q1"> Life and Career Skills<br>
+<input type="radio" name="q1"> Kasaysayan at Lipunang Pilipino<br>
+<br><br>
+<button type="button" class="btn" onclick="nextQuestion(1)">Next</button>
+</div>
+
+<!-- QUESTION 2 -->
+<div class="question" id="q2">
+<p class="progress">Question 2/6</p>
+<p>2. Choose a subject from Arts, Social Sciences and Humanities</p>
+<input type="radio" name="q2"> Filipino 1<br>
+<input type="radio" name="q2"> Filipino 2<br>
+<input type="radio" name="q2"> Introduction to Philosophy<br>
+<input type="radio" name="q2"> Philippine Politics and Governance<br>
+<input type="radio" name="q2"> Social Science in Theory and Practice<br>
+<br><br>
+<button type="button" class="btn" onclick="nextQuestion(2)">Next</button>
+</div>
+
+<!-- QUESTION 3 -->
+<div class="question" id="q3">
+<p class="progress">Question 3/6</p>
+<p>3. Choose a STEM subject</p>
+<input type="radio" name="q3"> Finite Mathematics 1<br>
+<input type="radio" name="q3"> Finite Mathematics 2<br>
+<input type="radio" name="q3"> Biology<br>
+<input type="radio" name="q3"> Physics<br>
+<input type="radio" name="q3"> Chemistry<br>
+<br><br>
+<button type="button" class="btn" onclick="nextQuestion(3)">Next</button>
+</div>
+
+<!-- QUESTION 4 -->
+<div class="question" id="q4">
+<p class="progress">Question 4/6</p>
+<p>4. Choose a Business subject</p>
+<input type="radio" name="q4"> Entrepreneurship<br>
+<input type="radio" name="q4"> Organization and Management<br>
+<br><br>
+<button type="button" class="btn" onclick="nextQuestion(4)">Next</button>
+</div>
+
+<!-- QUESTION 5 -->
+<div class="question" id="q5">
+<p class="progress">Question 5/6</p>
+<p>5. Choose a Sports / Wellness subject</p>
+<input type="radio" name="q5"> Physical Education 1<br>
+<input type="radio" name="q5"> Physical Education 2<br>
+<br><br>
+<button type="button" class="btn" onclick="nextQuestion(5)">Next</button>
+</div>
+
+<!-- FINAL QUESTION -->
+<div class="question" id="q6">
+<p class="progress">Question 6/6</p>
+<p>6. Choose a Tech Pro Elective</p>
+
+<b>A. Industrial Technologies</b><br>
+<input type="radio" name="q6"> Electrical Installation and Maintenance<br>
+<input type="radio" name="q6"> Electronics Product Assembly and Servicing<br>
+<br>
+<b>B. Hospitality and Tourism</b><br>
+<input type="radio" name="q6"> Bakery Operations<br>
+<input type="radio" name="q6"> Food and Beverage Operations<br>
+<input type="radio" name="q6"> Kitchen Operations<br>
+<br>
+<b>C. ICT Support and Computer Programming Technologies</b><br>
+<input type="radio" name="q6"> Computer Systems Servicing<br>
+<br><br>
+<button type="button" class="btn" onclick="submitQuiz()">Submit</button>
+</div>
+
+<h2 id="result" style="margin-top:30px;"></h2>
+</section>
+
+<!-- CAREERS -->
+<section id="careers" class="features">
+<div class="card"><h3>ICT</h3><p>Careers related to programming, networking, and IT systems.</p></div>
+<div class="card"><h3>Cookery</h3><p>Careers related to culinary arts and hospitality.</p></div>
+<div class="card"><h3>EIM</h3><p>Careers in electrical installation and maintenance.</p></div>
+<div class="card"><h3>EPAS</h3><p>Careers related to guidance services, career planning, and educational support.</p></div>
+</section>
+
+<footer>© 2026 Silanga Career Guidance Web Application</footer>
+
+<script>
+/* SHOW ASSESSMENT */
+function showQuiz(){
+document.getElementById("assessment").style.display="block";
+document.getElementById("assessment").scrollIntoView({behavior:"smooth"});
+}
+
+/* START QUIZ */
+function start(){
+document.getElementById("startBtn").style.display="none";
+document.getElementById("studentInfo").style.display="block";
+}
+
+/* NEXT QUESTION WITH VALIDATION */
+function nextQuestion(num){
+let radios;
+if(num===0){
+  // Student info validation
+  let name=document.getElementById("studentName").value.trim();
+  let lrn=document.getElementById("studentLRN").value.trim();
+  let section=document.getElementById("studentSection").value.trim();
+  if(name==="" || lrn==="" || section===""){
+    alert("Please fill all required student information before proceeding.");
+    return;
+  }
+  document.getElementById("studentInfo").style.display="none";
+  document.getElementById("q1").style.display="block";
+  return;
+}
+
+radios=document.getElementsByName("q"+num);
+let answered=false;
+for(let i=0;i<radios.length;i++){
+  if(radios[i].checked){ answered=true; break; }
+}
+if(!answered){ alert("Please select an answer before clicking Next."); return; }
+
+document.getElementById("q"+num).style.display="none";
+document.getElementById("q"+(num+1)).style.display="block";
+}
+
+/* SUBMIT QUIZ WITH STRAND RECOMMENDATION */
+function submitQuiz(){
+let radios=document.getElementsByName("q6");
+let answered=false;
+for(let i=0;i<radios.length;i++){ if(radios[i].checked){ answered=true; break; } }
+if(!answered){ alert("Please select an answer before submitting."); return; }
+
+// Count answers per strand
+let counts={ICT:0,EIM:0,Cookery:0,EPAS:0};
+
+const mapping={
+"Finite Mathematics 1":"ICT","Finite Mathematics 2":"ICT","Physics":"ICT","Computer Systems Servicing":"ICT",
+"Electrical Installation and Maintenance":"EIM","Electronics Product Assembly and Servicing":"EIM",
+"Bakery Operations":"Cookery","Food and Beverage Operations":"Cookery","Kitchen Operations":"Cookery",
+"Mabisang Komunikasyon":"EPAS","General Mathematics":"EPAS","General Science":"EPAS","Life and Career Skills":"EPAS","Kasaysayan at Lipunang Pilipino":"EPAS",
+"Filipino 1":"EPAS","Filipino 2":"EPAS","Introduction to Philosophy":"EPAS","Philippine Politics and Governance":"EPAS","Social Science in Theory and Practice":"EPAS",
+"Physical Education 1":"EPAS","Physical Education 2":"EPAS","Entrepreneurship":"EPAS","Organization and Management":"EPAS"
+};
+
+// Count user answers
+for(let i=1;i<=6;i++){
+  let r=document.getElementsByName("q"+i);
+  for(let j=0;j<r.length;j++){
+    if(r[j].checked){
+      let text = r[j].nextSibling.textContent.trim() || r[j].value || "";
+      if(mapping[text]) counts[mapping[text]]++;
+    }
+  }
+}
+
+// Recommend strand with highest count
+let strand=Object.keys(counts).reduce((a,b)=>counts[a]>=counts[b]?a:b);
+
+// Hide last question
+document.getElementById("q6").style.display="none";
+
+// Show result
+let name=document.getElementById("studentName").value.trim();
+document.getElementById("result").innerHTML=
+`Thank you, <b>${name}</b>!<br>Your recommended strand is: <b>${strand}</b>.<br>You may proceed to enrollment.`;
+}
+</script>
+
+</body>
+</html>
