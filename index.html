@@ -3,28 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Silanga SHS Career Guidance & Enrollment</title>
-
+<title>Silanga SHS Career Guidance</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
 html { scroll-behavior: smooth; }
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 body { color:white; overflow-x:hidden; background:#140032; }
 
 /* Background Gradient */
-.background{
-position:fixed; top:0; left:0; width:100%; height:100%;
-background:linear-gradient(rgba(20,0,50,0.9), rgba(80,0,120,0.9));
-z-index:-1;
-}
+.background{ position:fixed; top:0; left:0; width:100%; height:100%; background:linear-gradient(rgba(20,0,50,0.9), rgba(80,0,120,0.9)); z-index:-1; }
 
 /* Navigation */
-nav{
-display:flex; justify-content:space-between; align-items:center;
-padding:20px 10%; background:rgba(0,0,0,0.4);
-}
+nav{ display:flex; justify-content:space-between; align-items:center; padding:20px 10%; background:rgba(0,0,0,0.4);}
 nav h2{ color:#00eaff; }
 nav ul{ display:flex; list-style:none; }
 nav ul li{ margin-left:20px; }
@@ -38,37 +28,30 @@ nav ul li a:hover{ color:#00eaff; }
 .hero p{ max-width:700px; margin:auto; margin-bottom:30px; }
 
 /* Button */
-.btn{
-padding:12px 25px; border:none; border-radius:30px;
-background:#00eaff; font-weight:600; cursor:pointer;
-transition: 0.3s;
-}
+.btn{ padding:12px 25px; border:none; border-radius:30px; background:#00eaff; font-weight:600; cursor:pointer; transition:0.3s; }
 .btn:hover{ background:#00c0e0; }
 
 /* Assessment */
 #assessment{ display:none; padding:60px 10%; text-align:center; }
 .question{ display:none; margin-top:20px; }
 .progress{ margin-bottom:20px; font-weight:600; color:#00eaff; }
+#progressBarContainer{ width:100%; background:#333; border-radius:20px; margin-bottom:20px; height:20px; }
+#progressBar{ width:0%; height:100%; background:#00eaff; border-radius:20px; transition:0.3s; }
 
 /* Cards */
 .features{ display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:60px 10%; }
-.card{
-background:rgba(255,255,255,0.1); padding:25px; border-radius:15px; width:250px; transition:0.3s;
-}
+.card{ background:rgba(255,255,255,0.1); padding:25px; border-radius:15px; width:250px; transition:0.3s; }
 .card:hover{ background:rgba(0,234,255,0.2); transform:translateY(-5px); }
 .card h3{ color:#00eaff; margin-bottom:10px; }
 
 /* Footer */
 footer{ text-align:center; padding:20px; background:rgba(0,0,0,0.4); margin-top:40px; }
-input[type="text"], input[type="number"], input[type="email"]{
-width:80%; padding:10px; margin:5px 0 15px 0; border-radius:10px; border:none;
-}
 
+/* Confetti */
+.confetti-piece{ position:fixed; width:10px; height:10px; background:yellow; z-index:9999; pointer-events:none; }
 </style>
 </head>
-
 <body>
-
 <div class="background"></div>
 
 <nav>
@@ -80,22 +63,18 @@ width:80%; padding:10px; margin:5px 0 15px 0; border-radius:10px; border:none;
 </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
 <h1>A Career Guidance Web App for <span>Grade 10 Students</span></h1>
 <p>This system helps students explore subjects and choose the right SHS strand before enrollment.</p>
 <button class="btn" onclick="showQuiz()">Start Career Assessment</button>
 </section>
 
-<!-- ASSESSMENT -->
 <section id="assessment">
 <h2>SHS Course Selection & Enrollment</h2>
-
 <button id="startBtn" class="btn" onclick="startQuiz()">Start Quiz</button>
+<div id="progressBarContainer"><div id="progressBar"></div></div>
 
 <form id="careerForm">
-
-<!-- Student Info -->
 <div id="studentInfo" style="display:none; margin-bottom:30px;">
 <p class="progress">Step 0/6: Enter your information</p>
 <input type="text" id="studentName" placeholder="Full Name" required><br>
@@ -105,7 +84,7 @@ width:80%; padding:10px; margin:5px 0 15px 0; border-radius:10px; border:none;
 <button type="button" class="btn" onclick="nextQuestion(0)">Next</button>
 </div>
 
-<!-- QUESTION 1 -->
+<!-- QUESTIONS -->
 <div class="question" id="q1">
 <p class="progress">Question 1/6</p>
 <p>1. Choose a Core Subject</p>
@@ -118,7 +97,6 @@ width:80%; padding:10px; margin:5px 0 15px 0; border-radius:10px; border:none;
 <button type="button" class="btn" onclick="nextQuestion(1)">Next</button>
 </div>
 
-<!-- QUESTION 2 -->
 <div class="question" id="q2">
 <p class="progress">Question 2/6</p>
 <p>2. Choose a subject from Arts, Social Sciences and Humanities</p>
@@ -131,7 +109,6 @@ width:80%; padding:10px; margin:5px 0 15px 0; border-radius:10px; border:none;
 <button type="button" class="btn" onclick="nextQuestion(2)">Next</button>
 </div>
 
-<!-- QUESTION 3 -->
 <div class="question" id="q3">
 <p class="progress">Question 3/6</p>
 <p>3. Choose a STEM subject</p>
@@ -144,7 +121,6 @@ width:80%; padding:10px; margin:5px 0 15px 0; border-radius:10px; border:none;
 <button type="button" class="btn" onclick="nextQuestion(3)">Next</button>
 </div>
 
-<!-- QUESTION 4 -->
 <div class="question" id="q4">
 <p class="progress">Question 4/6</p>
 <p>4. Choose a Business subject</p>
@@ -154,7 +130,6 @@ width:80%; padding:10px; margin:5px 0 15px 0; border-radius:10px; border:none;
 <button type="button" class="btn" onclick="nextQuestion(4)">Next</button>
 </div>
 
-<!-- QUESTION 5 -->
 <div class="question" id="q5">
 <p class="progress">Question 5/6</p>
 <p>5. Choose a Sports / Wellness subject</p>
@@ -164,30 +139,28 @@ width:80%; padding:10px; margin:5px 0 15px 0; border-radius:10px; border:none;
 <button type="button" class="btn" onclick="nextQuestion(5)">Next</button>
 </div>
 
-<!-- FINAL QUESTION -->
 <div class="question" id="q6">
 <p class="progress">Question 6/6</p>
 <p>6. Choose a Tech Pro Elective</p>
-
 <b>A. Industrial Technologies</b><br>
 <input type="radio" name="q6"> Electrical Installation and Maintenance<br>
 <input type="radio" name="q6"> Electronics Product Assembly and Servicing<br>
-<br>
 <b>B. Hospitality and Tourism</b><br>
 <input type="radio" name="q6"> Bakery Operations<br>
 <input type="radio" name="q6"> Food and Beverage Operations<br>
 <input type="radio" name="q6"> Kitchen Operations<br>
-<br>
 <b>C. ICT Support and Computer Programming Technologies</b><br>
 <input type="radio" name="q6"> Computer Systems Servicing<br>
 <br><br>
 <button type="button" class="btn" onclick="submitQuiz()">Submit</button>
 </div>
+</form>
 
 <h2 id="result" style="margin-top:30px;"></h2>
+<button id="retakeBtn" class="btn" style="display:none;" onclick="retakeQuiz()">Retake Quiz</button>
+<button id="downloadBtn" class="btn" style="display:none;" onclick="downloadPDF()">Download PDF</button>
 </section>
 
-<!-- CAREERS -->
 <section id="careers" class="features">
 <div class="card"><h3>ICT</h3><p>Careers related to programming, networking, and IT systems.</p></div>
 <div class="card"><h3>Cookery</h3><p>Careers related to culinary arts and hospitality.</p></div>
@@ -198,47 +171,47 @@ width:80%; padding:10px; margin:5px 0 15px 0; border-radius:10px; border:none;
 <footer>© 2026 Silanga Career Guidance Web Application</footer>
 
 <script>
-/* SHOW ASSESSMENT */
+// Show Assessment
 function showQuiz(){
 document.getElementById("assessment").style.display="block";
 document.getElementById("assessment").scrollIntoView({behavior:"smooth"});
 }
 
-/* START QUIZ */
-function start(){
+// Start Quiz
+function startQuiz(){
 document.getElementById("startBtn").style.display="none";
 document.getElementById("studentInfo").style.display="block";
+updateProgress(0);
 }
 
-/* NEXT QUESTION WITH VALIDATION */
+// Update Progress Bar
+function updateProgress(step){
+let percent=Math.round((step/6)*100);
+document.getElementById("progressBar").style.width=percent+"%";
+}
+
+// Next Question Validation
 function nextQuestion(num){
-let radios;
 if(num===0){
-  // Student info validation
-  let name=document.getElementById("studentName").value.trim();
-  let lrn=document.getElementById("studentLRN").value.trim();
-  let section=document.getElementById("studentSection").value.trim();
-  if(name==="" || lrn==="" || section===""){
-    alert("Please fill all required student information before proceeding.");
-    return;
-  }
-  document.getElementById("studentInfo").style.display="none";
-  document.getElementById("q1").style.display="block";
-  return;
+let name=document.getElementById("studentName").value.trim();
+let lrn=document.getElementById("studentLRN").value.trim();
+let section=document.getElementById("studentSection").value.trim();
+if(name==="" || lrn==="" || section===""){ alert("Please fill all required information."); return; }
+document.getElementById("studentInfo").style.display="none";
+document.getElementById("q1").style.display="block";
+updateProgress(1);
+return;
 }
-
-radios=document.getElementsByName("q"+num);
+let radios=document.getElementsByName("q"+num);
 let answered=false;
-for(let i=0;i<radios.length;i++){
-  if(radios[i].checked){ answered=true; break; }
-}
+for(let i=0;i<radios.length;i++){ if(radios[i].checked){ answered=true; break; } }
 if(!answered){ alert("Please select an answer before clicking Next."); return; }
-
 document.getElementById("q"+num).style.display="none";
 document.getElementById("q"+(num+1)).style.display="block";
+updateProgress(num+1);
 }
 
-/* SUBMIT QUIZ WITH STRAND RECOMMENDATION */
+// Submit Quiz
 function submitQuiz(){
 let radios=document.getElementsByName("q6");
 let answered=false;
@@ -247,7 +220,6 @@ if(!answered){ alert("Please select an answer before submitting."); return; }
 
 // Count answers per strand
 let counts={ICT:0,EIM:0,Cookery:0,EPAS:0};
-
 const mapping={
 "Finite Mathematics 1":"ICT","Finite Mathematics 2":"ICT","Physics":"ICT","Computer Systems Servicing":"ICT",
 "Electrical Installation and Maintenance":"EIM","Electronics Product Assembly and Servicing":"EIM",
@@ -259,27 +231,66 @@ const mapping={
 
 // Count user answers
 for(let i=1;i<=6;i++){
-  let r=document.getElementsByName("q"+i);
-  for(let j=0;j<r.length;j++){
-    if(r[j].checked){
-      let text = r[j].nextSibling.textContent.trim() || r[j].value || "";
-      if(mapping[text]) counts[mapping[text]]++;
-    }
-  }
-}
+let r=document.getElementsByName("q"+i);
+for(let j=0;j<r.length;j++){
+if(r[j].checked){
+let text = r[j].nextSibling.textContent.trim() || r[j].value || "";
+if(mapping[text]) counts[mapping[text]]++;
+}}}
 
-// Recommend strand with highest count
+// Strand with highest count
 let strand=Object.keys(counts).reduce((a,b)=>counts[a]>=counts[b]?a:b);
 
 // Hide last question
 document.getElementById("q6").style.display="none";
+updateProgress(6);
 
 // Show result
 let name=document.getElementById("studentName").value.trim();
-document.getElementById("result").innerHTML=
-`Thank you, <b>${name}</b>!<br>Your recommended strand is: <b>${strand}</b>.<br>You may proceed to enrollment.`;
+document.getElementById("result").innerHTML=`🎉 Thank you, <b>${name}</b>!<br>Your recommended strand is: <b>${strand}</b>.<br>You may proceed to enrollment.`;
+
+// Show Retake & Download
+document.getElementById("retakeBtn").style.display="inline-block";
+document.getElementById("downloadBtn").style.display="inline-block";
+
+// Confetti
+launchConfetti();
+}
+
+// Retake Quiz
+function retakeQuiz(){ location.reload(); }
+
+// Download PDF
+function downloadPDF(){
+let result=document.getElementById("result").innerHTML;
+let blob=new Blob([result],{type:"text/html"});
+let link=document.createElement("a");
+link.href=URL.createObjectURL(blob);
+link.download="Career_Guidance_Result.html";
+link.click();
+}
+
+// Confetti
+function launchConfetti(){
+for(let i=0;i<150;i++){
+let conf=document.createElement("div");
+conf.className="confetti-piece";
+conf.style.background=`hsl(${Math.random()*360},100%,50%)`;
+conf.style.left=Math.random()*window.innerWidth+"px";
+conf.style.top=-10+"px";
+document.body.appendChild(conf);
+let speed=Math.random()*5+2;
+let rotate=Math.random()*360;
+(function animate(){
+let top=parseFloat(conf.style.top);
+if(top<window.innerHeight){
+conf.style.top=top+speed+"px";
+conf.style.transform=`rotate(${rotate}deg)`;
+requestAnimationFrame(animate);
+}else{ conf.remove(); }
+})();
+}
 }
 </script>
-
 </body>
 </html>
